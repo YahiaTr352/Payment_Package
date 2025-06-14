@@ -1,0 +1,192 @@
+body{
+    background: linear-gradient(135deg, #e0e0e0, #f4f4f4);
+}
+
+.spinner-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: transparent;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #eee;
+  border-top: 6px solid var(--primary-color); /* لون أحمر */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+ 
+ .customerPhone-div{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+   
+  .customerPhone-form {
+    background: white;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .otp-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  .otp-icon img {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* 👈 مهم: يسمح للعناصر تنزل لتحت إذا مافي مجال */
+  font-size: 13px;
+  background-color: #f9f9f9;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.info-item {
+  flex: 1 1 45%; /* 👈 خليه ياخد تقريبًا نصف العرض ويكسر إذا لازم */
+  min-width: 120px;
+  margin: 0;
+  word-break: break-word; /* 👈 يكسر الكلمات الطويلة */
+}
+  
+  .customerPhone-title {
+    text-align: center;
+    /* margin-bottom: 25px; */
+    color: #333;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  
+  .customerPhone-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+  }
+  
+  .customerPhone-input{
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+    font-size: 15px;
+  }
+  
+  .customerPhone-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(123, 102, 255, 0.3);
+    outline: none;
+  }
+  
+  .customerPhone-button {
+    width: 100%;
+    padding: 14px 0;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+    .loading-spinner {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .customerPhone-error{
+    font-size: 14px;
+    margin-top: 20px;
+    color: red;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+  @media (max-width : 430px){
+    body{
+      background: white;
+    }
+
+    .customerPhone-form {
+    border-radius: 0;
+    box-shadow: none;
+    /* animation: fadeIn 0.6s ease-out; */
+  }
+  }
+
+  @media (max-width : 400px){
+    .customerPhone-title {
+      font-size: 23px;
+    }
+  }

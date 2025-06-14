@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Your Phone</title>
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/index.css">
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/variables.css">
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/customerPhone.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://payment-package.onrender.com/js/showToast.js"></script>
+    <script src="https://payment-package.onrender.com/js/preventActions.js" ></script>
+            <script src="https://payment-package.onrender.com/js/encryption.js" ></script>
+    <script src="https://payment-package.onrender.com/js/customerPhone.js" defer></script>
+        <script src="https://payment-package.onrender.com/js/preventActions.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+</head>
+<body>
+
+<div id="loadingSpinner" class="spinner-wrapper">
+  <div class="spinner"></div>
+  <p class="loading-text">Loading page...</p>
+</div>
+</div>
+  <div class="customerPhone-div" id="phonePage" onsubmit="return false;">
+    <form class="customerPhone-form" id="paymentForm">
+      <div class="otp-icon">
+        <img src="https://payment-package.onrender.com/images/syrital.png" alt="secure" />
+      </div>
+
+      <h2 class="customerPhone-title">Enter Your Phone</h2> 
+      <div class="info-row" id="infoRow">
+        <p class="info-item" id="merchantInfo"><strong>Merchant:</strong> </p>
+        <p class="info-item" id="amountInfo"><strong>Total Amount:</strong> </p>
+      </div>
+
+      <label class="customerPhone-label" for="customerMSISDN">Phone Number</label>
+      <input class="customerPhone-input" type="text" id="customerMSISDN" placeholder="+9639xxxxxxx" />
+      <label class="customerPhone-label" for="confirmCustomerMSISDN">Confirm Phone Number</label>
+      <input class="customerPhone-input" type="text" id="confirmCustomerMSISDN" placeholder="+9639xxxxxxx" />
+       <div class="button-container">
+        <button type="submit" class="customerPhone-button" id="submitButton">
+          <span id="buttonContent">Next</span>
+          <div id="buttonSpinner" class="loading-spinner" style="display: none;"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

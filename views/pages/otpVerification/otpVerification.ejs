@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verify OTP</title>
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/index.css">
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/variables.css">
+  <link rel="stylesheet" href="https://payment-package.onrender.com/css/otpVerification.css" />
+    <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+    <script src="https://payment-package.onrender.com/js/showToast.js"></script>
+    <script src="https://payment-package.onrender.com/js/preventActions.js" ></script>
+                 <script src="https://payment-package.onrender.com/js/encryption.js" ></script>
+    <script src="https://payment-package.onrender.com/js/otpVerification.js" defer></script>
+
+  </head>
+  <body>
+    <div class="otp-box">
+      <div class="otp-icon">
+        <img src="https://payment-package.onrender.com/images/verifyImageOne.png" alt="secure" />
+      </div>
+      <h2>Enter OTP Code</h2>
+      <form id="otpForm">
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" />
+          <input type="text" maxlength="1" />
+          <input type="text" maxlength="1" />
+          <input type="text" maxlength="1" />
+          <input type="text" maxlength="1" />
+          <input type="text" maxlength="1" />
+        </div>
+       <div class="button-container">
+        <button type="submit" class="verify-btn" id="submitButton">
+          <span id="buttonContent">Verify OTP</span>
+          <div id="buttonSpinner" class="loading-spinner" style="display: none;"></div>
+        </button>
+      </div>
+        <p class="resend-text" id="resendBtn">Resend OTP</p>
+      </form>
+    </div>
+  </body>
+  </html>
