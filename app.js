@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ CORS قبل أي middleware يتعامل مع request
 app.use(cors({
-  origin: "http://localhost:3001",
+  origin: process.env.BASE_LOCAL_URL,
   credentials: true
 }));
 
@@ -48,19 +48,6 @@ app.set("views", path.join(__dirname, "views"));
 // ✅ الاتصال بقاعدة البيانات
 ConnectDB();
 connectKeysDB();
-
-// ✅ إعدادات الجلسة
-const sessionSecret = process.env.SESSION_SECRET || "default_session_secret";
-app.use(session({
-  secret: sessionSecret,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false,
-    httpOnly: true,
-    sameSite: "lax"
-  }
-}));
 
 // ✅ تعريف الراوتات
 app.use("/api/clients", potatoRoutes);
