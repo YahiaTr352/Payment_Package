@@ -1,3 +1,4 @@
+require("dotenv").config(); // تحميل متغيرات البيئة من .env
 const express = require("express");
 const potatoRoutes = require("./routes/potato");
 const cors = require("cors");
@@ -8,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const ConnectDB = require("./config/config");
 const rateLimiterMiddleware = require("./middlewares/limiter");
 const connectKeysDB = require("./config/keysDatabase");
-require("dotenv").config(); // تحميل متغيرات البيئة من .env
+
 
 const app = express();
 const port = process.env.PORT || 3001;

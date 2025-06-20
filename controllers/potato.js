@@ -85,7 +85,7 @@ const getToken = async (req, res) => {
     // تحقق أن pageID داخل الرسالة المشفّرة يطابق الخارجي
     if (decryptedData.pageID !== pageID) {
       return sendEncryptedError(res, decryptedPublicKey, "Mismatched page ID", 400);
-    }
+    } 
   } catch (e) {
     console.error("Decryption failed:", e);
     return sendEncryptedError(res, decryptedPublicKey, "Invalid encrypted payload", 400);
@@ -788,7 +788,8 @@ const getTransactions = async (req, res) => {
       } else if (!isNaN(Number(value)) && key === "amount") {
         value = Number(value);
       } else {
-        value = { $regex: value, $options: "i" };
+          const escaped = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          value = { $regex: escaped, $options: "i" };
       }
 
       filter[key] = value;
@@ -821,15 +822,15 @@ const getTransactions = async (req, res) => {
 
 module.exports = {
   saveServer,
-  getToken,
-  paymentRequest,
-  paymentConfirmation,
-  resendOTP,
-  getRedirctUrl,
-  getUrl,
-  customerPhonePage,
-  otpVerificationPage,
-  getPaymentData,
-  exchangeKeys,
-  getTransactions
+  getToken, // 5
+  paymentRequest, // 6
+  paymentConfirmation, // 9
+  resendOTP, 
+  getRedirctUrl, // 10
+  getUrl, //1. get url 
+  customerPhonePage, //2 rendering first page
+  otpVerificationPage, // 8
+  getPaymentData, // 4.get transcation data
+  exchangeKeys, // 3 exchange public keys 
+  getTransactions 
 };
