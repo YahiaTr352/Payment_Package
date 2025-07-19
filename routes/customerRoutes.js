@@ -1,6 +1,11 @@
 const express = require("express");
-const { paymentRequest, getToken, paymentConfirmation, resendOTP, customerPhonePage, otpVerificationPage, getPaymentData, getBaseURL, getUrl, getRedirctUrl, exchangeKeys, saveServer, getTransactions, getTransactionsByCompany,getTransactionsByProgrammName,generateReactCode,generateFlutterCode } = require("../controllers/potato");
 const limiter = require("../middlewares/limiter");
+const { customerPhonePage, otpVerificationPage } = require("../controllers/pageRenderController");
+const { getPaymentData, getTransactions, getTransactionsByProgrammName } = require("../controllers/transactionController");
+const { generateReactCode, generateFlutterCode } = require("../controllers/codeGeneratorController");
+const { exchangeKeys } = require("../controllers/encryptionController");
+const { saveServer } = require("../controllers/serverHealthController.");
+const { getRedirctUrl, getUrl, paymentConfirmation, resendOTP, paymentRequest, getToken } = require("../controllers/customerController");
 const router = express.Router();
 
 

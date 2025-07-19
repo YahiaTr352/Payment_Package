@@ -1,6 +1,6 @@
 require("dotenv").config(); // تحميل متغيرات البيئة من .env
 const express = require("express");
-const potatoRoutes = require("./routes/potato");
+const potatoRoutes = require("./routes/customerRoutes");
 const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
