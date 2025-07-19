@@ -1,4 +1,5 @@
 const EncryptionKeyModel = require("../models/keysModel");
+const { generateRSAKeyPair, encryptKeyGCM } = require("../utils/encryption");
 
 const exchangeKeys = async (req, res) => {
   const { clientPublicKey, phonePageID } = req.body;

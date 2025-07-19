@@ -1,4 +1,5 @@
 const EncryptionKeyModel = require("../models/keysModel");
+const paymentData = require("../models/paymentDataModel");
 
 const getPaymentData = async (req, res) => {
   let publicID;
