@@ -21,10 +21,10 @@ app.set('trust proxy', true);
 app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ CORS قبل أي middleware يتعامل مع request
-// app.use(cors({
-//   origin: process.env.BASE_LOCAL_URL,
-//   credentials: true
-// }));
+app.use(cors({
+  origin: process.env.BASE_LOCAL_URL,
+  credentials: true
+}));
 
 // ✅ مهم جداً لترتيب الطلبات بشكل صحيح
 app.use(cookieParser());
