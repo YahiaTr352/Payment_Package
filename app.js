@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 // ✅ middleware التحديد والفلترة
-app.use(rateLimiterMiddleware);
+// app.use(rateLimiterMiddleware);
 
 // ✅ بعد limiter (ما يعيق التنفيذ)
 app.use(userAgentFilter);
