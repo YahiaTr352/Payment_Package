@@ -101,16 +101,8 @@ app.get("your route", async (req, res) => {
 
 `
   res.setHeader("Content-Type", "text/plain");
-  res.status(200).json({
-    frontend: {
-      language: "HTML",
-      content: frontCode,
-    },
-    backend: {
-      language: "JavaScript",
-      content: backendCode,
-    },
-  });
+  res.send('/////backend//////\n'+backendCode+'/////frontend////\n'+frontCode);
+  
 }
 
 
