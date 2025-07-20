@@ -14,68 +14,97 @@ const generateReactCode = async (req, res) => {
     });
   }
 
-  const reactCode = `
-import { useEffect, useState } from "react";
-import axios from "axios";
+  const backendCode = `
 
-const CustomerPhonePage = () => {
-  const [iframeUrl, setIframeUrl] = useState("");
-  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchURL = async () => {
-      const payload = {
-        companyName: "${companyname}",
-        programmName: "${programname}",
-        code: "${code}",
-        merchantMSISDN: "${merchantmsisdn}",
-        amount: "${amount}",
-      };
+app.get("your route", async (req, res) => {
+  const payload = {
+   companyName: "${companyname}",
+   programmName: "${programname}",
+   code: "${code}",
+   merchantMSISDN: "${merchantmsisdn}",
+   amount: "${amount}",
+  };
 
-      try {
-        const response = await axios.post(
-          "https://payment-package-ocht.onrender.com/api/clients/get-url",
-          payload,
-          {
-            headers: { 
-              "Content-Type": "application/json",
-              "x-dev-request": "true",
-            },
-          }
-        );
-
-        const { url } = response.data;
-        setIframeUrl(url);
-      } catch (err) {
-        console.error("Failed to get URL", err);
-        setError("Failed to generate payment page.");
+  try {
+    const response = await axios.post(
+      "https://payment-package-edit.onrender.com/api/clients/get-url",
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-dev-request": "true",
+        },
       }
-    };
+    );
 
-    fetchURL();
-  }, []);
+    const { url } = response.data;
+    res.json({ url });
+  } catch (error) {
+    console.error("Error generating payment URL:", error.message);
+    res.status(500).json({ error: "Failed to generate payment URL" });
+  }
+});
+`
 
-  if (error) return <div style={{ color: "red" }}>{error}</div>;
+  const frontCode = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MTN Cash Payment</title>
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #error {
+      color: red;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="error"></div>
 
-  return iframeUrl ? (
-    <iframe
-      src={iframeUrl}
-      style={{ width: "100%", height: "100vh", border: "none" }}
-      sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
-      title="Customer Phone Page"
-    />
-  ) : (
-    <div>Loading...</div>
-  );
-};
+  <script>
+    async function loadIframe() {
+      try {
+        const res = await fetch("your route");
+        const data = await res.json();
 
-export default function App() {
-  return <CustomerPhonePage />;
-};
-`;
+        if (data.url) {
+          const iframe = document.createElement("iframe");
+          iframe.src = data.url;
+          iframe.sandbox = "allow-scripts allow-forms allow-same-origin allow-popups";
+          document.body.appendChild(iframe);
+        } else {
+          document.getElementById("error").textContent = "No URL returned.";
+        }
+      } catch (err) {
+        console.error("Error:", err);
+        document.getElementById("error").textContent = "Failed to load payment.";
+      }
+    }
 
+    loadIframe();
+  </script>
+</body>
+</html>
+
+`
   res.setHeader("Content-Type", "text/plain");
-  res.send(reactCode);
+  res.status(200).json({
+    frontend: frontCode,
+    backend: backendCode,
+  });
 }
 
 
