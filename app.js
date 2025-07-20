@@ -7,7 +7,7 @@ const session = require("express-session");
 const userAgentFilter = require("./middlewares/userAgentFilter");
 const cookieParser = require("cookie-parser");
 const ConnectDB = require("./config/config");
-const rateLimiterMiddleware = require("./middlewares/limiter");
+// const rateLimiterMiddleware = require("./middlewares/limiter");
 const connectKeysDB = require("./config/keysDatabase");
 
 
